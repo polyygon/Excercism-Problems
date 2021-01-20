@@ -1,20 +1,19 @@
 package hamming
 
-import "strings"
+import "errors"
 
 func Distance(a, b string) (int, error) {
-	// see if strings are equal 
-	strings.Compare(a,b) = 
-
-	for i :=0; i < len(a); i++ {
-
+	if len(a) != len(b) {
+		return 0, errors.New("different lengths")
 	}
 
+	distance :=0 
+	for i := range a {  
+		if a[i] != b[i] {
+			distance++ 
+		}
+	}
+	return distance, nil 
 }
 
-
-/* compare two strings element by element 
-	string -> slice 
-	compare with loop 
-	count updates when characters mismatch 
-*/ 
+// range loop compares arrays, slices, runes, maps element by element based on unicode ID 
